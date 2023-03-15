@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+
+	"name": "nathan-lannon/google-sheets-integration",
+	"version": "1.0.0",
+	"title": "Google Sheets Integration",
+	"category": "widgets",
+	"icon": "cloud",
+	"description": "A block to display data from google sheets inside your website.",
+
+	"supports": {
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": false,
+				"link": false
+			}
+		}
+	},
+
+	"attributes": {
+		"description": {
+			"type": "string",
+			"default": "Description of Data:"
+		},
+
+		"descriptionColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"descriptionSize": {
+			"type": "integer",
+			"default": 52
+		},
+		"descriptionAlignment": {
+			"type": "string",
+			"default": "left"
+		},
+
+		"dataColor": {
+			"type": "string",
+			"default": "#484848"
+		},
+		"dataSize": {
+			"type": "integer",
+			"default": 40
+		},
+		"dataAlignment": {
+			"type": "string",
+			"default": "right"
+		},
+
+		"sheetCSVURL": {
+			"type": "string"
+		},
+		"dataLocation": {
+			"type": "string"
+		}
+	},
+
+	"textdomain": "weatherblock",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
