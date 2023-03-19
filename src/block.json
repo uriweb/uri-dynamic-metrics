@@ -25,7 +25,11 @@
 	"attributes": {
 		"description": {
 			"type": "string",
-			"default": "Description of Data:"
+			"default": "Description"
+		},
+		"flipPositions": {
+			"type": "boolean",
+			"default": false
 		},
 
 		"descriptionColor": {
@@ -38,7 +42,7 @@
 		},
 		"descriptionAlignment": {
 			"type": "string",
-			"default": "left"
+			"default": "center"
 		},
 
 		"dataColor": {
@@ -51,7 +55,16 @@
 		},
 		"dataAlignment": {
 			"type": "string",
-			"default": "right"
+			"default": "center"
+		},
+
+		"dataPrefix": {
+			"type": "string",
+			"default": ""
+		},
+		"dataSuffix": {
+			"type": "string",
+			"default": ""
 		},
 
 		"sheetCSVURL": {
@@ -59,6 +72,18 @@
 		},
 		"dataLocation": {
 			"type": "string"
+		},
+		"descriptionLocation": {
+			"type": "string"
+		},
+
+		"animatedCounting": {
+			"type": "boolean",
+			"default": true
+		},
+		"countDuration": {
+			"type": "integer",
+			"default": 7500
 		}
 	},
 
