@@ -83,8 +83,16 @@ function fetchSheetData($sheetCSVURL, $dataCoordinates) {
         return "ERR";
     }
 
+    $column = $coordinates[0];
+    $row = $coordinates[1];
+
+    $numColumns = count($data[0]);
+    $numRows = count($data);
+
+    //return $column . "," . $row . " " . $numColumns . "," . $numRows;
+
     // if the coordinate input is outside of the range, throw an error 
-    if($coordinates[1] > count($data) || $coordinates[0] < 0 || $coordinates[0] > count($data[$coordinates[1]]) || $coordinates[1] < 0) {
+    if($column > $numColumns - 1 || $column < 0 || $row > $numRows - 1 || $row < 0) {
         error_log('Google Sheet Integration Error: Coordinate Input outside of Sheet Range'); 
         return "ERR";
     }

@@ -27,58 +27,95 @@ function pullDescription($attributes) {
     return fetchSheetData($attributes["sheetCSVURL"], $attributes["descriptionLocation"]);
 }
 
-// renders the block
-function create_block_google_sheets_block_render($attributes, $content, $block) {
-    $wrapper_attributes = get_block_wrapper_attributes();
+// creates a new description element
+function createDescriptionElement($attributes) {
+    $descriptionSize = $attributes["descriptionSize"];
+    $descriptionAlignment = $attributes["descriptionAlignment"];
+    $descriptionColor = $attributes["descriptionColor"];
 
-    // whether or not the user has set a description manually
-    $manualDescription = !array_key_exists("descriptionLocation", $attributes) || $attributes["descriptionLocation"] == "";
+    $flipPositions = $attributes["flipPositions"];
 
-    $dataValue = pullData($attributes);
+    $enableManualDescription = !array_key_exists("descriptionLocation", $attributes) || $attributes["descriptionLocation"] == "";
+    $descriptionValue = $enableManualDescription ? esc_html($attributes["description"]) : esc_html(pullDescription($attributes));
+
+    $description = "<p ";
+        $description .= "style='";
+        $description .=    "font-size: " . $descriptionSize . "px; ";
+        $description .=    "text-align: " . $descriptionAlignment . "; ";
+        $description .=    "color: " . $descriptionColor . "; ";
+        $description .=    ($flipPositions ? "margin-bottom: 0; " : "margin-top: 0; ");
+        $description .=    ($flipPositions ? "padding-bottom: 0; " : "padding-top: 0; ");
+        $description .= "'";
+    $description .= ">" . $descriptionValue . "</p>";
+
+    return $description;
+}
+
+// creates the data element
+function createDataElement($attributes) {
+    $dataValue = esc_html(pullData($attributes));
+
+    $dataSize = $attributes["dataSize"];
+    $dataAlignment = $attributes["dataAlignment"];
+    $dataColor = $attributes["dataColor"];
+
+    $flipPositions = $attributes["flipPositions"];
+
+    $enableAnimatedCounting = $attributes["animatedCounting"];
+    $animatedCountDuration = $attributes["countDuration"];
+
+    $dataPrefix = esc_html($attributes["dataPrefix"]);
+    $enableDataPrefix = $dataPrefix && $dataPrefix != "";
+
+    $dataSuffix = esc_html($attributes["dataSuffix"]);
+    $enableDataSuffix = $dataSuffix && $dataSuffix != "";
 
     $data = "<p ";
-        if($attributes["animatedCounting"]) { // sets the attributes if this will be animated
+        if($enbleAnimatedCounting) { // sets the attributes if this will be animated
             $data .= "class='google-sheets-counter' ";
-            $data .= "duration='" . $attributes["countDuration"] . "' ";
+            $data .= "duration='" . $animatedCountDuration . "' ";
             $data .= "countgoal='" . $dataValue . "' ";
 
-            if($attributes["dataPrefix"] && $attributes["dataPrefix"] != "") {
-                $data .= "prefix='" . $attributes["dataPrefix"] . "' ";
+            // add prefix and suffix to attributes, allows me to readd them with javascript
+            if($enableDataPrefix) {
+                $data .= "prefix='" . $dataPrefix . "' ";
             }
             
-            if($attributes["dataSuffix"] && $attributes["dataSuffix"] != "") {
-                $data .= "suffix='" . $attributes["dataSuffix"] . "' ";
+            if($enableDataSuffix) {
+                $data .= "suffix='" . $dataSuffix . "' ";
             }
         }
 
         $data .= "style='";
-        $data .=    "font-size: " . $attributes["dataSize"] . "px; ";
-        $data .=    "text-align: " . $attributes["dataAlignment"] . "; ";
-        $data .=    "color: " . $attributes["dataColor"] . "; ";
-        $data .=    ($attributes["flipPositions"] ? "margin-top: 0; " : "margin-bottom: 0; ");
-        $data .=    ($attributes["flipPositions"] ? "padding-top: 0; " : "padding-bottom: 0; ");
+        $data .=    "font-size: " . $dataSize . "px; ";
+        $data .=    "text-align: " . $dataAlignment . "; ";
+        $data .=    "color: " . $dataColor . "; ";
+        $data .=    ($flipPositions ? "margin-top: 0; " : "margin-bottom: 0; ");
+        $data .=    ($flipPositions ? "padding-top: 0; " : "padding-bottom: 0; ");
         $data .= "'";
 
-    // don't show value immediately if counting
-    if($attributes["animatedCounting"]) {
-        $data .= ">" . $attributes["dataPrefix"] . "0" . $attributes["dataSuffix"] . "</p>";
+    // if animated counting is enabled, make it start at 0.
+    if($enableAnimatedCounting) {
+        $data .= ">" . $dataPrefix . "0" . $dataSuffix . "</p>";
     } else {
-        $data .= ">" . $attributes["dataPrefix"] . $dataValue . $attributes["dataSuffix"] . "</p>";
+        $data .= ">" . $dataPrefix . $dataValue . $dataSuffix . "</p>";
     }
-    
-    $description = "<p ";
-        $description .= "style='";
-        $description .=    "font-size: " . $attributes["descriptionSize"] . "px; ";
-        $description .=    "text-align: " . $attributes["descriptionAlignment"] . "; ";
-        $description .=    "color: " . $attributes["descriptionColor"] . "; ";
-        $description .=    ($attributes["flipPositions"] ? "margin-bottom: 0; " : "margin-top: 0; ");
-        $description .=    ($attributes["flipPositions"] ? "padding-bottom: 0; " : "padding-top: 0; ");
-        $description .= "'";
-    $description .= ">" . ($manualDescription ? $attributes["description"] : pullDescription($attributes)) . "</p>";
+
+    return $data;
+}
+
+// renders the block
+function create_block_google_sheets_block_render($attributes, $content, $block) {
+    $wrapper_attributes = get_block_wrapper_attributes();
+
+    $flipPositions = $attributes["flipPositions"];
+
+    $description = createDescriptionElement($attributes);
+    $data = createDataElement($attributes);
 
     return 
         "<div " . $wrapper_attributes . ">"
-            . ($attributes["flipPositions"] ? $description : $data)
-            . ($attributes["flipPositions"] ? $data : $description) .
+            . ($flipPositions ? $description : $data)
+            . ($flipPositions ? $data : $description) .
         "</div>";
 }
