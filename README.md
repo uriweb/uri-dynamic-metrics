@@ -1,7 +1,7 @@
 # Google Sheets Dynamic Block for WordPress #
 This is a WordPress plugin that adds a new dynamic block to the Gutenberg editor, allowing you to easily display data from Google Sheets on your website.
 
-![](https://github.com/nlannon27/Wordpress-Google-Sheets-Integration/blob/assets/google-sheets-cropped.gif)
+![](https://github.com/nlannon27/Wordpress-Google-Sheets-Integration/blob/main/assets/google-sheets-cropped.gif)
 
 ## Features ##
 * Display data from Google Sheets on your WordPress site
