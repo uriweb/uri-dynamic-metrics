@@ -71,7 +71,7 @@ function createDataElement($attributes) {
     $enableDataSuffix = $dataSuffix && $dataSuffix != "";
 
     $data = "<p ";
-        if($enbleAnimatedCounting) { // sets the attributes if this will be animated
+        if($enableAnimatedCounting) { // sets the attributes if this will be animated
             $data .= "class='google-sheets-counter' ";
             $data .= "duration='" . $animatedCountDuration . "' ";
             $data .= "countgoal='" . $dataValue . "' ";
