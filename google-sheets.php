@@ -50,4 +50,4 @@ add_action( 'wp_enqueue_scripts', function() {
     );
 });
 
-include 'src/render.php';
+include 'assets/render.php';
