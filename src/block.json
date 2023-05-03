@@ -2,9 +2,9 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 
-	"name": "nathan-lannon/google-sheets-integration",
+	"name": "uri/dynamic-metrics",
 	"version": "1.0.0",
-	"title": "Google Sheets Integration",
+	"title": "Dynamic Metrics",
 	"category": "widgets",
 	"icon": "cloud",
 	"description": "A block to display data from google sheets inside your website.",

@@ -1,8 +1,8 @@
 <?php
 /**
  *  @wordpress-plugin
- *  Plugin Name: Google Sheets Integration
- *  Plugin URI:  https://github.com/nlannon27/Wordpress-Google-Sheets-Integration
+ *  Plugin Name: URI Dynamic Metrics
+ *  Plugin URI:  https://github.com/uriweb/uri-dynamic-metrics
  *  Description: A plugin that adds blocks to pull data from google sheets.
  *  Version:     1.0.0
  *  Author:      Nathan Lannon
