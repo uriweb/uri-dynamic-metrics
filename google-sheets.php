@@ -11,9 +11,9 @@
  *  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-function create_block_google_sheets_block_init() {
+function uri_dynamic_metrics_create_block_google_sheets_block_init() {
 	register_block_type( __DIR__ . '/build', array(
-        'render_callback' => 'create_block_google_sheets_block_render',
+        'render_callback' => 'uri_dynamic_metrics_create_block_google_sheets_block_render',
         'supports' => array(
             'html' => false,
             'color' => array(
@@ -28,7 +28,7 @@ function create_block_google_sheets_block_init() {
         )
 	) );
 }
-add_action( 'init', 'create_block_google_sheets_block_init' );
+add_action( 'init', 'uri_dynamic_metrics_create_block_google_sheets_block_init' );
 
 add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_script( 'jquery' );

@@ -1,6 +1,6 @@
 <?php
 
-function interpretCoordinates($dataCoordinates) {
+function uri_dynamic_metrics_interpretCoordinates($dataCoordinates) {
     if(is_numeric($dataCoordinates[0])) { // incorrect input
         error_log('Google Sheet Integration Error: Data Coordinate Value Invalid (0)'); 
         return null;
@@ -53,7 +53,7 @@ function interpretCoordinates($dataCoordinates) {
 }
 
 // pulls data from google sheet
-function fetchSheetData($sheetCSVURL, $dataCoordinates) {
+function uri_dynamic_metrics_fetchSheetData($sheetCSVURL, $dataCoordinates) {
     $csvData = @file_get_contents($sheetCSVURL); // pull csv data from sheet url
 
     if($csvData === FALSE) { // makes sure file opened correctly
@@ -75,7 +75,7 @@ function fetchSheetData($sheetCSVURL, $dataCoordinates) {
     }
 
     // convert google sheet coordinates to array of column, row
-    $coordinates = interpretCoordinates($dataCoordinates);
+    $coordinates = uri_dynamic_metrics_interpretCoordinates($dataCoordinates);
 
     // interpretCoordinates returns null if the input was wrong
     if($coordinates == null) {
