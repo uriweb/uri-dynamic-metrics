@@ -4,17 +4,25 @@ include __DIR__ . '/../assets/google-sheets-fetcher.php';
 
 // fetches the cell at the position of dataLocation, ensures the attributes are set before trying to fetch
 function pullData($attributes) {
-    if(!array_key_exists("sheetCSVURL", $attributes)) {
+    if(!array_key_exists("sheetCSVURL", $attributes) && !array_key_exists("dataLocation", $attributes)) {
         error_log('Google Sheet Integration Error: Invalid Sheet URL Attribute'); 
-        return "ERR";
+        return "ERR";   
+    }
+    //sanitize url input
+    else {
+        $cleanUrl = sanitize_text_field( $attributes["sheetCSVURL"] );
     }
 
-    if(!array_key_exists("dataLocation", $attributes)) {
-        error_log('Google Sheet Integration Error: Invalid Data Location Attribute'); 
-        return "ERR";
-    }
+    //if(!array_key_exists("dataLocation", $attributes)) {
+    //    error_log('Google Sheet Integration Error: Invalid Data Location Attribute'); 
+     //   return "ERR";
+    //}
 
-    return fetchSheetData($attributes["sheetCSVURL"], $attributes["dataLocation"]);
+    $metricNumber = fetchSheetData($cleanUrl, $attributes["dataLocation"]);
+
+    if(is_numeric($metricNumber)) {
+        return $metricNumber;
+    }
 }
 
 // fetches the cell at the position of descriptionLocation, ensures the attributes are set before trying to fetch
@@ -23,8 +31,14 @@ function pullDescription($attributes) {
         error_log('Google Sheet Integration Error: Invalid Sheet URL Attribute'); 
         return "ERR";
     }
+    else {
+        $cleanUrl = sanitize_text_field( $attributes["sheetCSVURL"] );
+    }
 
-    return fetchSheetData($attributes["sheetCSVURL"], $attributes["descriptionLocation"]);
+    $descriptionField = sanitize_text_field(fetchSheetData($cleanUrl, $attributes["descriptionLocation"]));
+
+    return $descriptionField;
+
 }
 
 // creates a new description element
