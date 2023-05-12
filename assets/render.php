@@ -3,32 +3,46 @@
 include __DIR__ . '/../assets/google-sheets-fetcher.php';
 
 // fetches the cell at the position of dataLocation, ensures the attributes are set before trying to fetch
-function pullData($attributes) {
-    if(!array_key_exists("sheetCSVURL", $attributes)) {
+function uri_dynamic_metrics_pullData($attributes) {
+    if(!array_key_exists("sheetCSVURL", $attributes) && !array_key_exists("dataLocation", $attributes)) {
         error_log('Google Sheet Integration Error: Invalid Sheet URL Attribute'); 
-        return "ERR";
+        return "Invalid Google Sheet URL";   
+    }
+    //sanitize url input
+    else {
+        $cleanUrl = sanitize_text_field( $attributes["sheetCSVURL"] );
     }
 
-    if(!array_key_exists("dataLocation", $attributes)) {
-        error_log('Google Sheet Integration Error: Invalid Data Location Attribute'); 
-        return "ERR";
-    }
+    //if(!array_key_exists("dataLocation", $attributes)) {
+    //    error_log('Google Sheet Integration Error: Invalid Data Location Attribute'); 
+     //   return "ERR";
+    //}
 
-    return fetchSheetData($attributes["sheetCSVURL"], $attributes["dataLocation"]);
+    $metricNumber = uri_dynamic_metrics_fetchSheetData($cleanUrl, $attributes["dataLocation"]);
+
+    if(is_numeric($metricNumber)) {
+        return $metricNumber;
+    }
 }
 
 // fetches the cell at the position of descriptionLocation, ensures the attributes are set before trying to fetch
-function pullDescription($attributes) {
+function uri_dynamic_metrics_pullDescription($attributes) {
     if(!array_key_exists("sheetCSVURL", $attributes)) {
         error_log('Google Sheet Integration Error: Invalid Sheet URL Attribute'); 
-        return "ERR";
+        return "Invalid Google Sheet URL";
+    }
+    else {
+        $cleanUrl = sanitize_text_field( $attributes["sheetCSVURL"] );
     }
 
-    return fetchSheetData($attributes["sheetCSVURL"], $attributes["descriptionLocation"]);
+    $descriptionField = sanitize_text_field(uri_dynamic_metrics_fetchSheetData($cleanUrl, $attributes["descriptionLocation"]));
+
+    return $descriptionField;
+
 }
 
 // creates a new description element
-function createDescriptionElement($attributes) {
+function uri_dynamic_metrics_createDescriptionElement($attributes) {
     $descriptionSize = $attributes["descriptionSize"];
     $descriptionAlignment = $attributes["descriptionAlignment"];
     $descriptionColor = $attributes["descriptionColor"];
@@ -36,7 +50,7 @@ function createDescriptionElement($attributes) {
     $flipPositions = $attributes["flipPositions"];
 
     $enableManualDescription = !array_key_exists("descriptionLocation", $attributes) || $attributes["descriptionLocation"] == "";
-    $descriptionValue = $enableManualDescription ? esc_html($attributes["description"]) : esc_html(pullDescription($attributes));
+    $descriptionValue = $enableManualDescription ? esc_html($attributes["description"]) : esc_html(uri_dynamic_metrics_pullDescription($attributes));
 
     $description = "<p ";
         $description .= "style='";
@@ -52,8 +66,11 @@ function createDescriptionElement($attributes) {
 }
 
 // creates the data element
-function createDataElement($attributes) {
-    $dataValue = esc_html(pullData($attributes));
+function uri_dynamic_metrics_createDataElement($attributes) {
+    $dataValue = esc_html(uri_dynamic_metrics_pullData($attributes));
+    if ($dataValue == null) {
+        return "Invalid data";
+    }
 
     $dataSize = $attributes["dataSize"];
     $dataAlignment = $attributes["dataAlignment"];
@@ -105,13 +122,13 @@ function createDataElement($attributes) {
 }
 
 // renders the block
-function create_block_google_sheets_block_render($attributes, $content, $block) {
+function uri_dynamic_metrics_create_block_google_sheets_block_render($attributes, $content, $block) {
     $wrapper_attributes = get_block_wrapper_attributes();
 
     $flipPositions = $attributes["flipPositions"];
 
-    $description = createDescriptionElement($attributes);
-    $data = createDataElement($attributes);
+    $description = uri_dynamic_metrics_createDescriptionElement($attributes);
+    $data = uri_dynamic_metrics_createDataElement($attributes);
 
     return 
         "<div " . $wrapper_attributes . ">"
