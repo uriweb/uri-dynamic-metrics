@@ -1,6 +1,6 @@
 {
 	"name": "uri-dynamic-metrics",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Pull data from google sheets into your website.",
 	"author": "Nathan Lannon",
 	"license": "GPL-2.0-or-later",
