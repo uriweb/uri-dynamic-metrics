@@ -41,5 +41,5 @@ __Tags:__ plugins
 __Requires at least:__ 5.0  
 __Tested up to:__ 6.0.2  
 __Stable tag:__ 1.0.0  
-__License:__ GPL2+
+__License:__ GPL2+  
 __Licence URI:__ http://www.gnu.org/licenses/gpl-2.0.html
