@@ -6,7 +6,7 @@ include __DIR__ . '/../assets/google-sheets-fetcher.php';
 function uri_dynamic_metrics_pullData($attributes) {
     if(!array_key_exists("sheetCSVURL", $attributes) && !array_key_exists("dataLocation", $attributes)) {
         error_log('Google Sheet Integration Error: Invalid Sheet URL Attribute'); 
-        return "ERR";   
+        return "Invalid Google Sheet URL";   
     }
     //sanitize url input
     else {
@@ -29,7 +29,7 @@ function uri_dynamic_metrics_pullData($attributes) {
 function uri_dynamic_metrics_pullDescription($attributes) {
     if(!array_key_exists("sheetCSVURL", $attributes)) {
         error_log('Google Sheet Integration Error: Invalid Sheet URL Attribute'); 
-        return "ERR";
+        return "Invalid Google Sheet URL";
     }
     else {
         $cleanUrl = sanitize_text_field( $attributes["sheetCSVURL"] );
@@ -68,6 +68,9 @@ function uri_dynamic_metrics_createDescriptionElement($attributes) {
 // creates the data element
 function uri_dynamic_metrics_createDataElement($attributes) {
     $dataValue = esc_html(uri_dynamic_metrics_pullData($attributes));
+    if ($dataValue == null) {
+        return "Invalid data";
+    }
 
     $dataSize = $attributes["dataSize"];
     $dataAlignment = $attributes["dataAlignment"];

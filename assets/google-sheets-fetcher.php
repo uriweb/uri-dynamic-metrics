@@ -71,7 +71,7 @@ function uri_dynamic_metrics_fetchSheetData($sheetCSVURL, $dataCoordinates) {
 
     if($data == null) {
         error_log('Google Sheet Integration Error: Invalid Data'); 
-        return "ERR";
+        return "Invalid data";
     }
 
     // convert google sheet coordinates to array of column, row
@@ -80,7 +80,7 @@ function uri_dynamic_metrics_fetchSheetData($sheetCSVURL, $dataCoordinates) {
     // interpretCoordinates returns null if the input was wrong
     if($coordinates == null) {
         error_log('Google Sheet Integration Error: Invalid Coordinate Input'); 
-        return "ERR";
+        return "Invalid Coordinate Input";
     }
 
     $column = $coordinates[0];
@@ -94,7 +94,7 @@ function uri_dynamic_metrics_fetchSheetData($sheetCSVURL, $dataCoordinates) {
     // if the coordinate input is outside of the range, throw an error 
     if($column > $numColumns - 1 || $column < 0 || $row > $numRows - 1 || $row < 0) {
         error_log('Google Sheet Integration Error: Coordinate Input outside of Sheet Range'); 
-        return "ERR";
+        return "Coordinate Input outside of Sheet Range";
     }
 
     return $data[$coordinates[1]][$coordinates[0]];
