@@ -4,7 +4,7 @@
  *  Plugin Name: URI Dynamic Metrics
  *  Plugin URI:  https://github.com/uriweb/uri-dynamic-metrics
  *  Description: A plugin that adds blocks to pull data from google sheets.
- *  Version:     2.0.0
+ *  Version:     2.0.1
  *  Author:      Alexandra Gauss
  *  Author:      Nathan Lannon
  *  Author URI:  https://nathanlannon.work/

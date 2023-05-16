@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "uri/dynamic-metrics",
+  "version": "2.0.1",
+  "title": "Dynamic Metrics",
+  "category": "widgets",
+  "icon": "cloud",
+  "description": "A block to display data from google sheets inside your website.",
+  "supports": {
+    "html": false,
+    "color": {
+      "gradients": true,
+      "link": true,
+      "__experimentalDefaultControls": {
+        "background": true,
+        "text": false,
+        "link": false
+      }
+    }
+  },
+  "attributes": {
+    "description": {
+      "type": "string",
+      "default": "Description"
+    },
+    "flipPositions": {
+      "type": "boolean",
+      "default": false
+    },
+    "descriptionColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "descriptionSize": {
+      "type": "integer",
+      "default": 52
+    },
+    "descriptionAlignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "dataColor": {
+      "type": "string",
+      "default": "#484848"
+    },
+    "dataSize": {
+      "type": "integer",
+      "default": 40
+    },
+    "dataAlignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "dataPrefix": {
+      "type": "string",
+      "default": ""
+    },
+    "dataSuffix": {
+      "type": "string",
+      "default": ""
+    },
+    "sheetCSVURL": {
+      "type": "string"
+    },
+    "dataLocation": {
+      "type": "string"
+    },
+    "descriptionLocation": {
+      "type": "string"
+    },
+    "animatedCounting": {
+      "type": "boolean",
+      "default": true
+    },
+    "countDuration": {
+      "type": "integer",
+      "default": 7500
+    }
+  },
+  "textdomain": "weatherblock",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
