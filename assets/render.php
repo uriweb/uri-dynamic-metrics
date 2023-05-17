@@ -59,9 +59,6 @@ function uri_dynamic_metrics_createDescriptionElement($attributes) {
 
     $description = "<p ";
         $description .= "style='";
-        $description .=    "font-size: " . $descriptionSize . "px; ";
-        $description .=    "text-align: " . $descriptionAlignment . "; ";
-        $description .=    "color: " . $descriptionColor . "; ";
         $description .=    ($flipPositions ? "margin-bottom: 0; " : "margin-top: 0; ");
         $description .=    ($flipPositions ? "padding-bottom: 0; " : "padding-top: 0; ");
         $description .= "'";
@@ -109,9 +106,6 @@ function uri_dynamic_metrics_createDataElement($attributes) {
         }
 
         $data .= "style='";
-        $data .=    "font-size: " . $dataSize . "px; ";
-        $data .=    "text-align: " . $dataAlignment . "; ";
-        $data .=    "color: " . $dataColor . "; ";
         $data .=    ($flipPositions ? "margin-top: 0; " : "margin-bottom: 0; ");
         $data .=    ($flipPositions ? "padding-top: 0; " : "padding-bottom: 0; ");
         $data .= "'";

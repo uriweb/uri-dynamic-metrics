@@ -28,30 +28,6 @@
       "type": "boolean",
       "default": false
     },
-    "descriptionColor": {
-      "type": "string",
-      "default": "#000000"
-    },
-    "descriptionSize": {
-      "type": "integer",
-      "default": 52
-    },
-    "descriptionAlignment": {
-      "type": "string",
-      "default": "center"
-    },
-    "dataColor": {
-      "type": "string",
-      "default": "#484848"
-    },
-    "dataSize": {
-      "type": "integer",
-      "default": 40
-    },
-    "dataAlignment": {
-      "type": "string",
-      "default": "center"
-    },
     "dataPrefix": {
       "type": "string",
       "default": ""

@@ -142,93 +142,24 @@ export default function Edit( { attributes, setAttributes } ) {
 							</>
 						}
 
-						<PanelBody title="Affixes" initialOpen={ false }>
-							<TextControl
-								label="Data Prefix"
-								value={ attributes.dataPrefix }
-								onChange={ ( newAffix ) =>
-									setAttributes( { dataPrefix: newAffix } )
-								}
-								help="Appends to the start of the data element"
-							/>
-
-							<TextControl
-								label="Data Suffix"
-								value={ attributes.dataSuffix }
-								onChange={ ( newAffix ) =>
-									setAttributes( { dataSuffix: newAffix } )
-								}
-								help="Appends to the end of the data element"
-							/>
-						</PanelBody>
-
-						<PanelBody title="Font Size" initialOpen={ false }>
-							<b style={ { fontSize: 11 } }>DATA FONT SIZE</b>
-							<FontSizePicker
-								fontSizes={ fontSizes }
-								value={ attributes.dataSize }
-								onChange={ ( newFontSize ) =>
-									setAttributes( { dataSize: newFontSize } )
-								}
-							/>
-
-							<b style={ { fontSize: 11 } }>DESCRIPTION FONT SIZE</b>
-							<FontSizePicker
-								fontSizes={ fontSizes }
-								value={ attributes.descriptionSize }
-								onChange={ ( newFontSize ) =>
-									setAttributes( {
-										descriptionSize: newFontSize,
-									} )
-								}
-							/>
-						</PanelBody>
-						
-						<PanelBody title="Alignment" initialOpen={ false }>
-							<SelectControl
-								label="Data Alignment"
-								value={ attributes.dataAlignment }
-								options={ alignmentOptions }
-								help="The horizontal alignment of the google sheets data"
-								onChange={ ( newAlignment ) =>
-									setAttributes( { dataAlignment: newAlignment } )
-								}
-							/>
-
-							<SelectControl
-								label="Description Alignment"
-								value={ attributes.descriptionAlignment }
-								options={ alignmentOptions }
-								help="The horizontal alignment of the description text"
-								onChange={ ( newAlignment ) =>
-									setAttributes( {
-										descriptionAlignment: newAlignment,
-									} )
-								}
-							/>
-						</PanelBody>
-
-						<PanelColorSettings
-							title={ __( 'Color Settings' ) }
-							colorSettings={ [
-								{
-									label: __( 'Data Text Color' ),
-									onChange: ( newColor ) =>
-										setAttributes( {
-											dataColor: newColor,
-										} ),
-									value: attributes.dataColor,
-								},
-								{
-									label: __( 'Description Text Color' ),
-									onChange: ( newColor ) =>
-										setAttributes( {
-											descriptionColor: newColor,
-										} ),
-									value: attributes.descriptionColor,
-								}
-							] }
+						<TextControl
+							label="Data Prefix"
+							value={ attributes.dataPrefix }
+							onChange={ ( newAffix ) =>
+								setAttributes( { dataPrefix: newAffix } )
+							}
+							help="Appends to the start of the data element"
 						/>
+
+						<TextControl
+							label="Data Suffix"
+							value={ attributes.dataSuffix }
+							onChange={ ( newAffix ) =>
+								setAttributes( { dataSuffix: newAffix } )
+							}
+							help="Appends to the end of the data element"
+						/>
+
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
