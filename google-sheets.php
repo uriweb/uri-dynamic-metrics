@@ -21,16 +21,7 @@ function uri_dynamic_metrics_create_block_google_sheets_block_init() {
 	register_block_type( __DIR__ . '/build', array(
         'render_callback' => 'uri_dynamic_metrics_create_block_google_sheets_block_render',
         'supports' => array(
-            'html' => false,
-            'color' => array(
-                'gradients' => true,
-                'link' => true,
-                '__experimentalDefaultControls' => array(
-                    'background' => true,
-                    'text' => false,
-                    'link' => false
-                )
-            )    
+            'html' => false
         )
 	) );
 }

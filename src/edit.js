@@ -6,18 +6,6 @@ import { __experimentalNumberControl as NumberControl } from '@wordpress/compone
 import { Fragment } from '@wordpress/element';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const fontSizes = [
-		{ name: __( 'Small' ), slug: 'small', size: 16 },
-		{ name: __( 'Medium' ), slug: 'medium', size: 28 },
-		{ name: __( 'Large' ), slug: 'large', size: 40 },
-		{ name: __( 'Extra Large' ), slug: 'xlarge', size: 52 },
-	];
-
-	const alignmentOptions = [
-		{ label: 'Right', value: 'right' },
-		{ label: 'Left', value: 'left' },
-		{ label: 'Center', value: 'center' },
-	];
 
 	const DescriptionText = (objectStyle) => {
 		

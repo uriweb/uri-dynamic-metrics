@@ -7,19 +7,10 @@
 	"title": "Dynamic Metrics",
 	"category": "widgets",
 	"icon": "cloud",
-	"description": "A block to display data from google sheets inside your website.",
+	"description": "Display data from Google Sheets.",
 
 	"supports": {
-		"html": false,
-		"color": {
-			"gradients": true,
-			"link": true,
-			"__experimentalDefaultControls": {
-				"background": true,
-				"text": false,
-				"link": false
-			}
-		}
+		"html": false
 	},
 
 	"attributes": {
@@ -31,7 +22,7 @@
 			"type": "boolean",
 			"default": false
 		},
-		
+
 		"dataPrefix": {
 			"type": "string",
 			"default": ""
