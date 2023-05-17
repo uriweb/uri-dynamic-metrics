@@ -1,4 +1,9 @@
 <?php
+/**
+ * GOOGLE SHEETS FETCHER
+ *
+ * @package uri-dynamic-metrics
+ */
 
 function uri_dynamic_metrics_interpretCoordinates($dataCoordinates) {
     if(is_numeric($dataCoordinates[0])) { // incorrect input

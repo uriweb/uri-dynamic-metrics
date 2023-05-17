@@ -5,11 +5,16 @@
  *  Plugin URI:  https://github.com/uriweb/uri-dynamic-metrics
  *  Description: A plugin that adds blocks to pull data from google sheets.
  *  Version:     2.0.1
- *  Author:      Alexandra Gauss
- *  Author:      Nathan Lannon
- *  Author URI:  https://nathanlannon.work/
+ *  Author: URI Web Communications
+ *  Author URI: https://today.uri.edu/
  *  License:     GPL2+
  *  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * 
+ *  @author Alexandra Gauss <alexandra_gauss@uri.edu>
+ *  @author Brandon Fuller <bjcfuller@uri.edu>
+ *  @author Nathan Lannon <nathanlannon27@gmail.com>
+ * 
+ *  @package uri-dynamic-metrics
  */
 
 function uri_dynamic_metrics_create_block_google_sheets_block_init() {

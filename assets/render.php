@@ -1,4 +1,9 @@
 <?php
+/**
+ * RENDERING
+ *
+ * @package uri-dynamic-metrics
+ */
 
 include __DIR__ . '/../assets/google-sheets-fetcher.php';
 

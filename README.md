@@ -2,7 +2,7 @@
 This is a WordPress plugin that adds a new dynamic block to the Gutenberg editor, allowing users to easily display data from Google Sheets.
 
 <p align="center">
-  <img src="https://github.com/nlannon27/Wordpress-Google-Sheets-Integration/blob/main/assets/google-sheets-cropped.gif" alt="animated" />
+  <img src="https://github.com/uriweb/uri-dynamic-metrics/blob/main/assets/google-sheets-cropped.gif" alt="animated" />
 </p>
 
 ## Features ##
