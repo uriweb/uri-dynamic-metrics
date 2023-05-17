@@ -16,7 +16,7 @@
  */
 
 function uri_dynamic_metrics_create_block_google_sheets_block_init() {
-	register_block_type( __DIR__ . '/build', array(
+	register_block_type( 'uri/dynamic-metrics', array(
         'render_callback' => 'uri_dynamic_metrics_create_block_google_sheets_block_render',
         'supports' => array(
             'html' => false
