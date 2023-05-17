@@ -1,6 +1,5 @@
 <?php
 /**
- *  @wordpress-plugin
  *  Plugin Name: URI Dynamic Metrics
  *  Plugin URI:  https://github.com/uriweb/uri-dynamic-metrics
  *  Description: A plugin that adds blocks to pull data from google sheets.
@@ -13,7 +12,6 @@
  *  @author Alexandra Gauss <alexandra_gauss@uri.edu>
  *  @author Brandon Fuller <bjcfuller@uri.edu>
  *  @author Nathan Lannon <nathanlannon27@gmail.com>
- * 
  *  @package uri-dynamic-metrics
  */
 
@@ -31,7 +29,7 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_script( 'jquery' );
 
     wp_enqueue_script(
-        'nathanlannon-animated-counter',
+        'uri-dynamic-metrics-animated-counter',
         plugin_dir_url( __FILE__ ) . '/assets/animated-counter.js',
         array('jquery', 'jquery-easing'),
         '',
@@ -39,7 +37,7 @@ add_action( 'wp_enqueue_scripts', function() {
     );
 
     wp_enqueue_script(
-        'jquery-easing',
+        'uri-dynamic-metrics-jquery-easing',
         plugin_dir_url( __FILE__ ) . '/assets/jquery.easing.js',
         array('jquery'),
         '',
