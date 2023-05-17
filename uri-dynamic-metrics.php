@@ -16,7 +16,13 @@
  */
 
 function uri_dynamic_metrics_create_block_google_sheets_block_init() {
-	register_block_type( 'uri/dynamic-metrics', array(
+
+    // Skip block registration if Gutenberg is not enabled/merged.
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
+
+	register_block_type( __DIR__ . '/build', array(
         'render_callback' => 'uri_dynamic_metrics_create_block_google_sheets_block_render',
         'supports' => array(
             'html' => false
