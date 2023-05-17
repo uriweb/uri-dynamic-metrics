@@ -20,15 +20,11 @@ export default function Edit( { attributes, setAttributes } ) {
 	];
 
 	const DescriptionText = (objectStyle) => {
-		objectStyle["textAlign"] = attributes.descriptionAlignment;
-		objectStyle["fontSize"] = attributes.descriptionSize;
-		objectStyle["color"] = attributes.descriptionColor;
 		
 		if(attributes.descriptionLocation == "" || attributes.descriptionLocation == undefined) {
 			return (
 				<RichText
 					tagName="p"
-					style={ objectStyle }
 					onChange={ ( newDescription ) => {
 						setAttributes( { description: newDescription } );
 					} }
@@ -37,7 +33,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			);
 		} else {
 			return (
-				<p style={ objectStyle }>
+				<p>
 					Description
 				</p>
 			)
@@ -45,12 +41,8 @@ export default function Edit( { attributes, setAttributes } ) {
 	}
 
 	const DataText = (objectStyle) => {
-		objectStyle["textAlign"] = attributes.dataAlignment;
-		objectStyle["fontSize"] = attributes.dataSize;
-		objectStyle["color"] = attributes.dataColor;
-
 		return (
-			<p style={ objectStyle }>
+			<p>
 				{attributes.dataPrefix}#,###,###{attributes.dataSuffix}
 			</p>
 		);
