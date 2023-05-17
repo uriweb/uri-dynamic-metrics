@@ -2,7 +2,12 @@
 	"name": "uri-dynamic-metrics",
 	"version": "2.0.1",
 	"description": "Pull data from google sheets into your website.",
-	"author": "Nathan Lannon",
+	"author": "University of Rhode Island",
+	"humans": [
+		"Alexandra Gauss <alexandra_guass@uri.edu>",
+		"Brandon Fuller <bjcfuller@uri.edu>",
+		"Nathan Lannon <nathanlannon27@gmail.com>"
+	],
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
