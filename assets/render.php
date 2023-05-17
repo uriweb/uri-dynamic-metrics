@@ -97,7 +97,7 @@ function uri_dynamic_metrics_createDataElement($attributes) {
 }
 
 // renders the block
-function uri_dynamic_metrics_create_block_google_sheets_block_render($attributes, $content, $block) {
+function uri_dynamic_metrics_render_block($attributes, $content, $block) {
     $wrapper_attributes = get_block_wrapper_attributes();
 
     $flipPositions = $attributes["flipPositions"];

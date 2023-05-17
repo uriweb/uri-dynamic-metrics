@@ -15,7 +15,7 @@
  *  @package uri-dynamic-metrics
  */
 
-function uri_dynamic_metrics_create_block_google_sheets_block_init() {
+function uri_dynamic_metrics_register_block() {
 
     // Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -23,13 +23,13 @@ function uri_dynamic_metrics_create_block_google_sheets_block_init() {
 	}
 
 	register_block_type( __DIR__ . '/build', array(
-        'render_callback' => 'uri_dynamic_metrics_create_block_google_sheets_block_render',
+        'render_callback' => 'uri_dynamic_metrics_render_block',
         'supports' => array(
             'html' => false
         )
 	) );
 }
-add_action( 'init', 'uri_dynamic_metrics_create_block_google_sheets_block_init' );
+add_action( 'init', 'uri_dynamic_metrics_register_block' );
 
 add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_script( 'jquery' );
